@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}events{% endblock %}
+
+{% block content %}
+  <section class="probootstrap-section probootstrap-section-colored">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-left section-heading probootstrap-animate">
+          <h1>Our School Events</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+
+      {% if featured_event %}
+        <div class="col-md-12">
+          <div class="probootstrap-flex-block">
+            <div class="probootstrap-text probootstrap-animate">
+              <div class="text-uppercase probootstrap-uppercase">Featured Event</div>
+              <h3>{{ featured_event.name }}</h3>
+              <p>{{ featured_event.description }}</p>
+              <p>
+                <span class="probootstrap-date"><i class="icon-calendar"></i>{{ featured_event.start_date }} - {{ featured_event.end_date }}</span>
+                <span class="probootstrap-location"><i class="icon-location2"></i>{{ featured_event.address|safe|linebreaks }}</span>
+              </p>
+              <p><a href="{% url 'events:event_detail' featured_event.slug %}" class="btn btn-primary">Learn More</a></p>
+            </div>
+            <div class="probootstrap-image probootstrap-animate" style="background-image: url({{ featured_event.image_url }})">
+{#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+            </div>
+          </div>
+        </div>
+      {% elif latest_event %}
+        <div class="col-md-12">
+          <div class="probootstrap-flex-block">
+            <div class="probootstrap-text probootstrap-animate">
+              <div class="text-uppercase probootstrap-uppercase">Latest Event</div>
+              <h3>{{ latest_event.name }}</h3>
+              <p>{{ latest_event.description }}</p>
+              <p>
+                <span class="probootstrap-date"><i class="icon-calendar"></i>{{ latest_event.start_date }} - {{ latest_event.end_date }}</span>
+                <span class="probootstrap-location"><i class="icon-location2"></i>{{ latest_event.address|safe|linebreaks }}</span>
+              </p>
+              <p><a href="{% url 'events:event_detail' latest_event.slug %}" class="btn btn-primary">Learn More</a></p>
+            </div>
+            <div class="probootstrap-image probootstrap-animate" style="background-image: url({{ latest_event.image_url }})">
+{#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="col-md-12">
+          <div class="probootstrap-flex-block">
+            <div class="probootstrap-text probootstrap-animate">
+{#              <div class="text-uppercase probootstrap-uppercase">{{ latest_blog.category }}</div>#}
+              <br>
+              <br>
+              <br>
+              {% if request.user.is_authenticated %}
+                  <h3>Hi {{ request.user.username }}</h3>
+              {% else %}
+                  <h3>Empty</h3>
+              {% endif %}
+              <p>Do check back often for latest events in the school.</p>
+            <br>
+            <br>
+            <br>
+            </div>
+            <div class="probootstrap-image probootstrap-animate" style="background-image: url(https://res.cloudinary.com/dptrfsirm/image/upload/v1658630785/bg_logos/logo_1_duylbj.png); background-position: center">
+{#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="probootstrap-section">
+    <div class="container">
+
+      <div class="row">
+          {% for e in events %}
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
+              <a href="{% url 'events:event_detail' e.slug %}" class="probootstrap-featured-news-box">
+                <figure class="probootstrap-media"><img src="{{ e.image_url }}" alt="{{ e.name }}" class="img-responsive" style="height: 350px; width: 400px;"></figure>
+                <div class="probootstrap-text">
+                  <h3>{{ e.name }}</h3>
+                  <span class="probootstrap-date"><i class="icon-calendar"></i>Start Date: {{ e.start_date }}</span>
+                  <span class="probootstrap-date"><i class="icon-calendar"></i>End Date: {{ e.end_date }}</span>
+                  <span class="probootstrap-location"><i class="icon-location2"></i>{{ e.address|safe }}</span>
+                </div>
+              </a>
+            </div>
+          {% empty %}
+          {% endfor %}
+        <div class="clearfix visible-md-block"></div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

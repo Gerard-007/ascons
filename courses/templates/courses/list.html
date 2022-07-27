@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}news{% endblock %}
+
+{% block content %}
+    <section class="probootstrap-section probootstrap-section-colored">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-left section-heading probootstrap-animate">
+              <h1>Courses we offer</h1>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="probootstrap-section">
+        <div class="container">
+          <div class="row">
+            {% if featured_course %}
+              <div class="col-md-12">
+                  <div class="probootstrap-flex-block">
+                    <div class="probootstrap-text probootstrap-animate">
+                      <div class="text-uppercase probootstrap-uppercase">Featured Course</div>
+                      <h3>{{ featured_course.name }}</h3>
+                      <p>{{ featured_course.description }}</p>
+                      <p><a href="#" class="btn btn-primary">Enroll now</a> <span class="enrolled-count">{{ featured_course.get_num_of_enrolled_students }} students enrolled</span></p>
+                    </div>
+                    <div class="probootstrap-image probootstrap-animate" style="background-image: url({{ featured_course.image_url }})">
+{#                      <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+                    </div>
+                  </div>
+              </div>
+            {% elif latest_course %}
+              <div class="col-md-12">
+                  <div class="probootstrap-flex-block">
+                    <div class="probootstrap-text probootstrap-animate">
+                      <div class="text-uppercase probootstrap-uppercase">Latest Course</div>
+                      <h3>{{ latest_course.name }}</h3>
+                      <p>{{ latest_course.description }}</p>
+                      <p><a href="#" class="btn btn-primary">Enroll now</a> <span class="enrolled-count">{{ latest_course.get_num_of_enrolled_students }} students enrolled</span></p>
+                    </div>
+                    <div class="probootstrap-image probootstrap-animate" style="background-image: url({{ latest_course.image_url }})">
+{#                      <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+                    </div>
+                  </div>
+              </div>
+            {% else %}
+                <div class="col-md-12">
+                  <div class="probootstrap-flex-block">
+                    <div class="probootstrap-text probootstrap-animate">
+                      <div class="text-uppercase probootstrap-uppercase">{{ latest_blog.category }}</div>
+                      <br>
+                      <br>
+                      <br>
+                      {% if request.user.is_authenticated %}
+                          <h3>Hi {{ request.user.username }}</h3>
+                      {% else %}
+                          <h3>Empty</h3>
+                      {% endif %}
+                      <p>Do check back often for latest courses offered by our school.</p>
+                      <br>
+                      <br>
+                      <br>
+                    </div>
+                    <div class="probootstrap-image probootstrap-animate" style="background-image: url(https://res.cloudinary.com/dptrfsirm/image/upload/v1658630785/bg_logos/logo_1_duylbj.png); background-position: center">
+        {#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+                    </div>
+                  </div>
+                </div>
+            {% endif %}
+          </div>
+        </div>
+    </section>
+
+    <section class="probootstrap-section">
+        <div class="container">
+          <div class="row">
+              {% for c in courses %}
+                <div class="col-md-6">
+                  <div class="probootstrap-service-2 probootstrap-animate">
+                    <div class="image">
+                      <div class="image-bg">
+                        <img src="{{ c.image_url }}" alt="{{ c.name }}" class="img-responsive">
+                      </div>
+                    </div>
+                    <div class="text">
+                      <span class="probootstrap-meta"><i class="icon-calendar2"></i> {{ c.start_date|timeuntil }}</span>
+                      <h3>{{ c.name }}</h3>
+                      <p>{{ c.description|linebreaks|truncatewords:20 }}</p>
+                      <p><span class="enrolled-count">{{ c.get_num_of_enrolled_students }} students enrolled</span></p>
+                    </div>
+                  </div>
+                </div>
+              {% empty %}
+              {% endfor %}
+          </div>
+        </div>
+    </section>
+
+{% endblock %}

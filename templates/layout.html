@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://res.cloudinary.com/dptrfsirm/image/upload/v1658665802/bg_logos/logo-removebg-preview_v3kh2p.png">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dptrfsirm/image/upload/v1658665802/bg_logos/logo-removebg-preview_v3kh2p.png">
+    <title>{% block title %}{% endblock %} | ASCONS</title>
+{#    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">#}
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '../static/css/styles-merged.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/custom.css' %}">
+    <link href="{% static '../static/css/toastr.css' %}" rel="stylesheet"/>
+    <script src="{% static '../static/js/toastr.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="{% static '../static/js/vendor/html5shiv.min.js' %}"></script>
+      <script src="{% static '../static/js/vendor/respond.min.js' %}"></script>
+    <![endif]-->
+  </head>
+  <body>
+    {% include 'includes/toast_message.html' %}
+    {% include 'includes/search.html' %}
+
+    <div class="probootstrap-page-wrapper">
+        {% include 'includes/navbar.html' %}
+        {% block content %} {% endblock %}
+        {% include 'includes/enroll.html' %}
+        {% include 'includes/footer.html' %}
+    </div>
+    <!-- END wrapper -->
+
+    <script src="{% static '../static/js/scripts.min.js' %}"></script>
+    <script src="{% static '../static/js/main.min.js' %}"></script>
+    <script src="{% static '../static/js/custom.js' %}"></script>
+  </body>
+</html>

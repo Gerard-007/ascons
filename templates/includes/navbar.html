@@ -1,0 +1,82 @@
+{% url 'home' as home %}
+{% url 'about' as about %}
+{% url 'courses:course_list' as courses %}
+{% url 'events:event_list' as events %}
+{% url 'blogs:blog_list' as blogs %}
+{% url 'contacts:contact' as contact %}
+
+<!-- Fixed navbar -->
+      <div class="probootstrap-header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9 probootstrap-top-quick-contact-info">
+              <span><i class="icon-location2"></i>Our Lady’s Road Nkpor Anambra State, Nigeria</span>
+              <span><i class="icon-phone2"></i>+2348035502188</span>
+              <span><i class="icon-mail"></i>info@ascons.com.ng</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
+              <ul>
+                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                <li><a href="#"><i class="icon-linkedin2"></i></a></li>
+                <li><a href="#" class="probootstrap-search-icon js-probootstrap-search"><i class="icon-search"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-default probootstrap-navbar">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="btn-more js-btn-more visible-xs">
+              <a href="#"><i class="icon-dots-three-vertical "></i></a>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"></a>
+          </div>
+
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li {% if request.path == home %} class="active" {% else %}{% endif %}><a href="{% url 'home' %}">Home</a></li>
+              <li {% if request.path == about %} class="active" {% else %}{% endif %}><a href="{% url 'about' %}">About Us</a></li>
+              <li {% if request.path == courses %} class="active" {% else %}{% endif %}><a href="{% url 'courses:course_list' %}">Courses</a></li>
+              <li {% if request.path == blogs %} class="active" {% else %}{% endif %}><a href="{% url 'blogs:blog_list' %}">News</a></li>
+              <li {% if request.path == events %} class="active" {% else %}{% endif %}><a href="{% url 'events:event_list' %}">Events</a></li>
+              <li {% if request.path == contact %} class="active" {% else %}{% endif %}><a href="{% url 'contacts:contact' %}">Contact</a></li>
+            {% if request.user.is_authenticated %}
+              <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle">{{ request.user.username }}</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Profile</a></li>
+                {% if request.user.is_superuser %}
+                    <li><a href="/ascons_edu_admin/">Admin Dashboard</a></li>
+                {% elif request.user.is_school_staff %}
+                    <li><a href="#">School Admission Dashboard</a></li>
+                {% elif request.user.is_student %}
+                    <li><a href="#">Student Portal</a></li>
+                {% endif %}
+                <li><a href="#">Settings</a></li>
+{#                  <li><a href="news.html">News</a></li>#}
+{#                    <li class="dropdown-submenu dropdown">#}
+{#                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>#}
+{#                    <ul class="dropdown-menu">#}
+{#                      <li><a href="#">Second Level Menu</a></li>#}
+{#                      <li><a href="#">Second Level Menu</a></li>#}
+{#                      <li><a href="#">Second Level Menu</a></li>#}
+{#                      <li><a href="#">Second Level Menu</a></li>#}
+{#                    </ul>#}
+{#                  </li>#}
+                </ul>
+              </li>
+            {% else %}
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>

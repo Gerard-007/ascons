@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}contact{% endblock %}
+
+{% block content %}
+      <section class="probootstrap-section probootstrap-section-colored">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-left section-heading probootstrap-animate">
+              <h1 class="mb0">Contact Us</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="probootstrap-section probootstrap-section-sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row probootstrap-gutter0">
+                <div class="col-md-4" id="probootstrap-sidebar">
+                  <div class="probootstrap-sidebar-inner probootstrap-overlap probootstrap-animate">
+{#                    <h3>Pages</h3>#}
+{#                    <ul class="probootstrap-side-menu">#}
+{##}
+{#                      <li><a href="{% url 'home' %}">Home</a></li>#}
+{#                      <li><a href="{% url 'courses:course_list' %}">Courses</a></li>#}
+{#                      <li><a href="{% url 'teachers:teacher_list' %}">Teachers</a></li>#}
+{#                      <li><a href="{% url 'events:event_list' %}">Events</a></li>#}
+{#                      <li><a href="{% url 'blogs:blog_list' %}">News</a></li>#}
+{#                      <li class="active"><a>Contact Us</a></li>#}
+{#                    </ul>#}
+                    <h3>Contact</h3>
+                    <h5>
+                        <span class="probootstrap-date"><i class="icon-envelop"></i>info@ascons.com.ng</span>
+                        <br>
+                        <span class="probootstrap-date"><i class="icon-phone"></i>+2348035502188</span>
+                        <br>
+                        <span class="probootstrap-date"><i class="icon-location-pin"></i>Our Lady’s Road Nkpor Anambra State, Nigeria</span>
+                        <br>
+                        <span class="probootstrap-date"><i class="icon-telegram"></i>P.O.Box 434</span>
+{#                        <br>#}
+{#                        <span class="probootstrap-date"><i class="icon-time-slot"></i>Open</span>#}
+    {#                        <span class="probootstrap-date"><i class="icon-eye"></i>{{ latest_blog.view }}</span>#}
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-md-7 col-md-push-1  probootstrap-animate" id="probootstrap-content">
+                  <h2>Get In Touch</h2>
+                  <p>Contact us using the form below.</p>
+                  <form action="{% url 'contacts:contact' %}" method="POST" class="probootstrap-form">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="name">Full Name</label>
+                      {% if request.user.is_authenticated %}
+                        <input type="text" class="form-control" id="name" name="name" value="{{ request.user.username }}" disabled>
+                      {% else %}
+                        <input type="text" class="form-control" id="name" name="name" placeholder="John Ezeh">
+                      {% endif %}
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      {% if request.user.is_authenticated %}
+                        <input type="email" class="form-control" id="email" name="email" value="{{ request.user.email }}" disabled>
+                      {% else %}
+                        <input type="email" class="form-control" id="email" name="email" placeholder="john@email.com">
+                      {% endif %}
+                    </div>
+                    <div class="form-group">
+                      <label for="phone">phone</label>
+                      <input type="number" class="form-control" id="phone" name="phone" placeholder="+234803123456">
+                    </div>
+                    <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject of your message eg: enquiry, admission etc...">
+                    </div>
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea cols="30" rows="10" class="form-control" id="message" name="message"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-lg" value="Send Message">
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15867.600419631306!2d6.834992920316145!3d6.144118409564451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043917a41140ba5%3A0xd3a8e4c7f4a6c7dd!2sCollege%20of%20Nursing%20%26%20Midwifery%20sciences%20nkpor!5e0!3m2!1sen!2sng!4v1658810076302!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{% endblock %}

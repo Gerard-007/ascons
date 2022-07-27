@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}news{% endblock %}
+
+{% block content %}
+  <section class="probootstrap-section probootstrap-section-colored">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-left section-heading probootstrap-animate">
+          <h1>School's News/Articles</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+      {% if latest_blog %}
+        <div class="col-md-12">
+          <div class="probootstrap-flex-block">
+            <div class="probootstrap-text probootstrap-animate">
+              <div class="text-uppercase probootstrap-uppercase">{{ latest_blog.category }}</div>
+              <h3>{{ latest_blog.title }}</h3>
+              <p>{{ latest_blog.description|truncatewords:10 }}</p>
+              <p>
+                <span class="probootstrap-date"><i class="icon-calendar"></i>{{ latest_blog.created|timesince }} ago</span>
+                <span class="probootstrap-location"><i class="icon-user2"></i>author: {{ latest_blog.author.get_full_name }}</span>
+              </p>
+              <p><a href="{% url 'blogs:blog_detail' latest_blog.slug %}" class="btn btn-primary">Learn More</a></p>
+            </div>
+            <div class="probootstrap-image probootstrap-animate" style="background-image: url({{ latest_blog.image_url }})">
+{#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="col-md-12">
+          <div class="probootstrap-flex-block">
+            <div class="probootstrap-text probootstrap-animate">
+              <div class="text-uppercase probootstrap-uppercase">{{ latest_blog.category }}</div>
+              <br>
+              <br>
+              <br>
+              {% if request.user.is_authenticated %}
+                  <h3>Hi {{ request.user.username }}</h3>
+              {% else %}
+                  <h3>Empty</h3>
+              {% endif %}
+              <p>Do check back often for latest news about the school.</p>
+            <br>
+            <br>
+            <br>
+            </div>
+            <div class="probootstrap-image probootstrap-animate" style="background-image: url(https://res.cloudinary.com/dptrfsirm/image/upload/v1658630785/bg_logos/logo_1_duylbj.png); background-position: center">
+{#              <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a>#}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        {% for blog in blogs %}
+        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
+          <a href="{% url 'blogs:blog_detail' blog.slug %}" class="probootstrap-featured-news-box">
+            <figure class="probootstrap-media"><img src="{{ blog.image_url }}" alt="{{ blog.title }}" class="img-responsive" style="height: 350px; width: 400px;"></figure>
+            <div class="probootstrap-text">
+              <h3>{{ blog.title }}</h3>
+              <p>{{ blog.description|truncatewords:10 }}</p>
+              <span class="probootstrap-location"><i class="icon-user2"></i>{{ blog.author.username }}</span>
+              <span class="probootstrap-date"><i class="icon-calendar"></i>{{ blog.created|timesince }} ago</span>
+              <span class="probootstrap-date"><i class="icon-eye"></i>{{ blog.views }} views</span>
+            </div>
+          </a>
+        </div>
+        {% empty %}
+        {% endfor %}
+        <div class="clearfix visible-sm-block visible-xs-block"></div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

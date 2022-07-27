@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block content %}
+  <section class="probootstrap-section probootstrap-section-colored">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-left section-heading probootstrap-animate">
+          <h1>{{ blog.title|title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section probootstrap-section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row probootstrap-gutter0">
+            <div class="col-md-4" id="probootstrap-sidebar">
+              <div class="probootstrap-sidebar-inner probootstrap-overlap probootstrap-animate">
+                <h3>Description</h3>
+                <p>{{ blog.description }}</p>
+                <p>
+
+                    <span class="probootstrap-date"><i class="icon-user"></i>By: {{ blog.author.get_full_name|title }}</span>
+                    <span class="probootstrap-date"><i class="icon-calendar"></i>{{ blog.created }}</span>
+                    <span class="probootstrap-date"><i class="icon-eye"></i>{{ blog.views }} views</span>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-7 col-md-push-1  probootstrap-animate" id="probootstrap-content">
+              <h2>Read more...</h2>
+              <p>{{ blog.body|linebreaks|safe }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="col-md-6">
+        <p>
+          <img src="{{ blog.author.image_url }}" alt="{{ blog.author.get_full_name }}" class="img-responsive">
+        </p>
+      </div>
+      <div class="col-md-6 col-md-push-1">
+        <h2>Author: {{ blog.author.get_full_name|title }}</h2>
+        {% if blog.author.bio %}
+          <p>{{ blog.author.bio }}</p>
+        {% else %}
+          <p>
+              Look out for more news/articles about ASCONS from {{ blog.author.get_full_name|title }}
+              {% if blog.author.username == request.user.username %}
+                  <a href="#">click to update your bio</a>
+              {% endif %}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
