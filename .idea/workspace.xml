@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65eb3817-f5a0-4abe-8779-313390c51d07" name="Default Changelist" comment="" />
+    <list default="true" id="65eb3817-f5a0-4abe-8779-313390c51d07" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/layout.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-216">
+                <state>
                   <caret column="17" selection-start-column="17" selection-end-column="17" />
                 </state>
               </provider>
@@ -55,8 +57,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ascons/settings/production.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3581">
-                  <caret line="154" lean-forward="true" selection-start-line="147" selection-end-line="154" />
+                <state relative-caret-position="170">
+                  <caret line="149" column="20" lean-forward="true" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="20" />
                   <folding>
                     <element signature="e#307#316#0" expanded="true" />
                   </folding>
@@ -277,6 +279,7 @@
       <workItem from="1658627079515" duration="10205000" />
       <workItem from="1658659515977" duration="81526000" />
       <workItem from="1658863736131" duration="1466000" />
+      <workItem from="1658952202594" duration="873000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit project.">
       <created>1658952097853</created>
@@ -289,7 +292,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128402000" />
+    <option name="totallyTimeSpent" value="129275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -305,10 +308,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49924472" visible="true" weight="0.32881355" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924472" weight="0.32881355" />
       <window_info anchor="bottom" id="Sourcery" order="9" weight="0.32881355" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49848944" weight="0.31864408" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49848944" visible="true" weight="0.31864408" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50151056" side_tool="true" weight="0.32881355" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32881355" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -798,15 +801,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
+        <state>
           <caret column="17" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ascons/settings/production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3581">
-          <caret line="154" lean-forward="true" selection-start-line="147" selection-end-line="154" />
+        <state relative-caret-position="170">
+          <caret line="149" column="20" lean-forward="true" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="20" />
           <folding>
             <element signature="e#307#316#0" expanded="true" />
           </folding>
