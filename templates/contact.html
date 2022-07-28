@@ -69,7 +69,11 @@
                     </div>
                     <div class="form-group">
                       <label for="phone">phone</label>
-                      <input type="number" class="form-control" id="phone" name="phone" placeholder="+234803123456">
+                      {% if request.user.is_authenticated %}
+                          <input type="number" class="form-control" id="phone" name="phone" value="{{ request.user.phone }}" placeholder="+234803123456" disabled>
+                      {% else %}
+                          <input type="number" class="form-control" id="phone" name="phone" placeholder="+234803123456">
+                      {% endif %}
                     </div>
                     <div class="form-group">
                       <label for="subject">Subject</label>

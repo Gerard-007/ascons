@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="{% static '../static/css/styles-merged.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/style.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/custom.css' %}">
-    <link href="{% static '../static/css/toastr.css' %}" rel="stylesheet"/>
-    <script src="{% static '../static/js/toastr.js' %}"></script>
 
     <!--[if lt IE 9]>
       <script src="{% static '../static/js/vendor/html5shiv.min.js' %}"></script>
@@ -21,7 +19,7 @@
     <![endif]-->
   </head>
   <body>
-    {% include 'includes/toast_message.html' %}
+    {% include 'includes/message.html' %}
     {% include 'includes/search.html' %}
 
     <div class="probootstrap-page-wrapper">

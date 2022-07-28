@@ -19,6 +19,7 @@ class ContactView(View):
         if request.user.is_authenticated:
             _name = request.user.username
             _email = request.user.email
+            _phone = request.user.phone
         else:
             _name = request.POST['name']
             _email = request.POST['email']
@@ -47,7 +48,6 @@ class ContactView(View):
                 to='+19786345903'
             )
             print(twl_message.sid)
-
             # Display message if successful...
             messages.success(request, "Email sent successfully...")
             return render(request, 'contact.html')
@@ -60,6 +60,5 @@ class ContactView(View):
                 message=_message,
             )
             contact.save()
-
             messages.success(request, "Message sent and received successfully")
             return render(request, 'contact.html')
