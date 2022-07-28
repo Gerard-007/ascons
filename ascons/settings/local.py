@@ -93,9 +93,12 @@ WSGI_APPLICATION = 'ascons.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dfvojrk3bije4s',
+        'USER': 'rrbyquicrpxfdx',
+        'PASSWORD': '7e5ee41053c6c47dd3d1c6990c410665ca0431b0e6212e9da2efa4f337e2fcaa',
+        'HOST': 'ec2-54-87-179-4.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
