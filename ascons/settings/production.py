@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -19,10 +20,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yo+rdti)4%+*tx3vk=p5u5qwuy(y9^-^4t9djj4u3cju48^p)n'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -94,11 +95,11 @@ WSGI_APPLICATION = 'ascons.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfvojrk3bije4s',
-        'USER': 'rrbyquicrpxfdx',
-        'PASSWORD': '7e5ee41053c6c47dd3d1c6990c410665ca0431b0e6212e9da2efa4f337e2fcaa',
-        'HOST': 'ec2-54-87-179-4.compute-1.amazonaws.com',
-        'PORT': '5432'
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT': config('POSTGRES_PORT')
     }
 }
 
@@ -174,7 +175,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    config("CORS_ALLOWED_ORIGINS"),
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -188,8 +189,8 @@ AUTH_USER_MODEL = "accounts.User"
 # import all settings from cloudinary
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dptrfsirm',
-    'API_KEY': '326488911736571',
-    'API_SECRET': 'AeE1QeMpEfipzclRuPLj_XOGO80',
-    'API_PROXY': 'http://proxy.server:3128'
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+    'API_PROXY': config('API_PROXY')
 }

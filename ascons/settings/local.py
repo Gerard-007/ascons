@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -91,29 +92,24 @@ WSGI_APPLICATION = 'ascons.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfvojrk3bije4s',
-        'USER': 'rrbyquicrpxfdx',
-        'PASSWORD': '7e5ee41053c6c47dd3d1c6990c410665ca0431b0e6212e9da2efa4f337e2fcaa',
-        'HOST': 'ec2-54-87-179-4.compute-1.amazonaws.com',
-        'PORT': '5432'
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
-#         #'ENGINE': 'django.db.backends.sqlite3',
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': 'utoGKK5DdJlLBln9dRGk',
-#         'HOST': 'containers-us-west-79.railway.app',
-#         'PORT': '5813',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dfvojrk3bije4s',
+#         'USER': 'rrbyquicrpxfdx',
+#         'PASSWORD': '7e5ee41053c6c47dd3d1c6990c410665ca0431b0e6212e9da2efa4f337e2fcaa',
+#         'HOST': 'ec2-54-87-179-4.compute-1.amazonaws.com',
+#         'PORT': '5432'
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # qunzcdienqcxexmr
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -158,12 +154,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'propin9ja', 'static')
+STATIC_ROOT = '/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -203,5 +198,11 @@ CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dptrfsirm',
     'API_KEY': '326488911736571',
     'API_SECRET': 'AeE1QeMpEfipzclRuPLj_XOGO80',
-    'API_PROXY': 'http://proxy.server:3128'
 }
+
+
+cloudinary.config(
+    cloud_name="dptrfsirm",
+    api_key="326488911736571",
+    api_secret="AeE1QeMpEfipzclRuPLj_XOGO80"
+)
