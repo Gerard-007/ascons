@@ -1,5 +1,5 @@
 
-![Logo]([https://res.cloudinary.com/dptrfsirm/image/upload/v1658665802/bg_logos/logo-removebg-preview_v3kh2p.png](https://res.cloudinary.com/dptrfsirm/image/upload/v1658670742/bg_logos/logo_1_krngyx.png))
+![Logo](https://res.cloudinary.com/dptrfsirm/image/upload/v1658670742/bg_logos/logo_1_krngyx.png)
 
 
 # ASCONS
